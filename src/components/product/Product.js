@@ -3,8 +3,14 @@ import { cartContext } from "../../context/CartContextProvider";
 import { productContext } from "../../context/ProductContextProvider";
 
 export const Product = ({ prod }) => {
-  const { quantity, setQuantity, cartItems, setCartItems } =
-    useContext(cartContext);
+  const {
+    quantity,
+    setQuantity,
+    cartItems,
+    setCartItems,
+    totalAmount,
+    setTotalAmount,
+  } = useContext(cartContext);
   const { products, setProducts } = useContext(productContext);
   const { productName, description, price, small, medium, large } = prod;
 
@@ -32,6 +38,7 @@ export const Product = ({ prod }) => {
         },
       ]);
     }
+    setTotalAmount(+totalAmount + +price);
   }
 
   function inCart() {
